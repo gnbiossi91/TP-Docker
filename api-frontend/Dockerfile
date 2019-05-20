@@ -1,8 +1,5 @@
-FROM python:2.7
-LABEL hub_url watchavation/docker_tp_frontend
-RUN pip install requests Flask
-WORKDIR /app
-COPY ./api.py /app
-EXPOSE 8000
-ENTRYPOINT [ "python" ]
-CMD [ "/app/api.py" ]  
+FROM ubuntu:latest
+RUN apt update
+RUN apt install -y python python-flask python-requests
+COPY api.py /app/api.py
+CMD ["python", "/app/api.py"]
